@@ -458,6 +458,42 @@ video.hero-bg{object-fit:cover}
 .ls-vcard:hover{border-color:var(--gold)}
 .ls-vcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,5,5,.8));pointer-events:none}
 .ls-vcap{position:absolute;left:20px;bottom:18px;z-index:2;font:400 1.5rem/1.1 var(--serif);color:var(--ivory)}
+/* DJ YouTube videos */
+.dj-live{margin-top:clamp(50px,6vw,84px)}
+.djl-head{text-align:center;margin-bottom:clamp(22px,3vw,36px)}
+.djl-t{font:400 clamp(1.9rem,3.6vw,3rem)/1.05 var(--serif);color:var(--ivory);margin-top:10px}
+.djl-ur{font-family:"Noto Nastaliq Urdu",serif;font-size:.95rem;line-height:2.1;color:var(--muted,#bdb6a6);margin-top:6px}
+.djl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+.yt-card{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);background:#050505;transition:border-color .8s,box-shadow .8s;isolation:isolate}
+.yt-card.feat{grid-column:1/-1}
+.yt-card:hover,.yt-card.snd{border-color:var(--gold)}
+.yt-card.snd{box-shadow:0 0 0 1px var(--gold),0 30px 90px -30px var(--gold)}
+.yt-box{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.yt-box iframe,.yt-box>div{position:absolute;left:50%;top:50%;width:100%;height:100%;transform:translate(-50%,-50%) scale(1.2);border:0}
+.yt-hit{position:absolute;inset:0;z-index:4;cursor:pointer;background:transparent}
+.yt-card::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(5,5,5,.45),transparent 22%,transparent 58%,rgba(5,5,5,.85));pointer-events:none}
+.yt-cover{position:absolute;inset:0;z-index:3;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 45%,rgba(201,169,110,.16),#050505 70%);transition:opacity .9s;pointer-events:none}
+.yt-card.playing .yt-cover{opacity:0}
+.yt-spin{width:46px;height:46px;border-radius:50%;border:1px solid rgba(236,217,171,.18);border-top-color:var(--gold);animation:ytspin 1.1s linear infinite}
+.yt-play{display:none;font:600 .7rem/1 var(--caps);letter-spacing:.24em;text-transform:uppercase;color:var(--ivory);padding:14px 22px;border:1px solid var(--gold)}
+.yt-card.need-tap .yt-spin,.yt-card.yt-fail .yt-spin{display:none}
+.yt-card.need-tap .yt-play,.yt-card.yt-fail .yt-play{display:block}
+@keyframes ytspin{to{transform:rotate(360deg)}}
+.yt-card .vid-tag{z-index:5;pointer-events:none}
+.yt-card .ls-vcap{z-index:5;pointer-events:none}
+.yt-card.feat .ls-vcap{font-size:clamp(1.5rem,2.6vw,2.2rem)}
+.yt-snd{position:absolute;right:16px;bottom:16px;z-index:5;pointer-events:none;display:flex;align-items:center;gap:8px;padding:9px 14px;background:rgba(5,5,5,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(236,217,171,.35);font:600 .6rem/1 var(--caps);letter-spacing:.18em;text-transform:uppercase;color:var(--ivory)}
+.yt-snd .yt-ic{font-style:normal;font-size:.95rem;letter-spacing:0}
+.yt-snd span[lang]{font-family:"Noto Nastaliq Urdu",serif;font-size:.8rem;letter-spacing:0;text-transform:none;line-height:1}
+.yt-card.snd .yt-snd{border-color:var(--gold);color:var(--gold-hi)}
+.yt-card:not(.snd) .yt-snd{animation:ytpulse 2.4s ease-in-out infinite}
+@keyframes ytpulse{50%{box-shadow:0 0 0 6px rgba(201,169,110,.12)}}
+@media (max-width:899px){
+  .djl-grid{grid-template-columns:minmax(0,1fr)}
+  .yt-snd{right:10px;bottom:auto;top:10px;padding:8px 11px}
+  .yt-card .ls-vcap{font-size:1.15rem;left:14px;bottom:14px;right:14px}
+  .yt-card.feat .ls-vcap{font-size:1.35rem}
+}
 /* fullscreen player */
 .vp{position:fixed;inset:0;z-index:125;background:rgba(5,5,5,.97);display:grid;grid-template-rows:auto 1fr;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gutter) calc(env(safe-area-inset-bottom,0px) + 18px)}
 .vp-top{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px}
@@ -611,7 +647,7 @@ html:not([data-ev]) #tintLens{opacity:.5}
 .naat-frame .vid{object-fit:cover}
 .naat-badge{position:absolute;z-index:3;top:18px;left:18px;padding:8px 13px;background:var(--gold);color:#0a0806;font:600 .6rem/1 var(--caps);letter-spacing:.22em;text-transform:uppercase}
 .naat-cap{position:absolute;z-index:3;left:22px;bottom:22px;display:grid;gap:6px;max-width:40%;text-shadow:0 2px 14px #000}
-.naat-title{font:400 clamp(1.8rem,3vw,2.8rem)/1.05 var(--serif);color:var(--ivory)}
+.naat-title{font:400 clamp(1.4rem,2.3vw,2.2rem)/1.15 var(--serif);color:var(--ivory)}
 .ur-small{font-size:1.05rem;line-height:2;color:var(--gold-hi)}
 .naat-play{justify-self:start;margin-top:8px;padding:12px 16px;border:1px solid var(--gold);font:600 .62rem/1 var(--caps);letter-spacing:.22em;text-transform:uppercase;color:var(--ivory);background:rgba(5,5,5,.5)}
 .naat-main:hover .naat-play{background:var(--gold);color:#0a0806}
@@ -844,6 +880,13 @@ html:not([data-ev]) #tintLens{opacity:.5}
   .logo-emb{width:36px!important;height:36px!important}
 }
 
+.naat-teaser{display:none!important}
+.naat-cap{max-width:46%}
+.naat-main::before{content:"";position:absolute;left:0;right:0;bottom:0;height:55%;z-index:3;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(5,5,5,.88))}
+@media (max-width:899px){.naat-cap{max-width:none;right:18px;left:18px;bottom:16px}.naat-title{font-size:1.25rem}.naat-cap .ur-small{font-size:.9rem;line-height:1.9}.naat-play{padding:10px 12px;font-size:.56rem}}
+@media (max-width:640px){.naat-teaser .nt-t{font-size:.72rem;line-height:1.3}}
+html[data-ev="milad"] .naat-teaser{display:grid!important}
+
 /* responsive */
 @media (max-width:1100px){.ev-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:899px){
@@ -983,7 +1026,7 @@ html:not([data-ev]) #tintLens{opacity:.5}
     <p class="sub"><span>Luxury Stages</span><b>•</b><span>Floral Décor</span><b>•</b><span>Weddings</span><b>•</b><span>Events</span><b>•</b><span>Lights, Sound &amp; DJ</span><b>•</b><span>Complete Event Planning</span></p>
     <div class="ctas"><a href="#stages" class="btn btn-gold mag" data-scroll>Explore Our Work</a><a href="#book" class="btn btn-line mag" data-scroll>Plan Your Event</a><button type="button" class="btn btn-line mag" id="heroNaat" data-vk2="naat" hidden>&#9654; Naat Highlight</button></div>
   </div>
-  <a href="#naat" class="naat-teaser" data-go><span class="nt-star">&#9733; New</span><span class="nt-t">Watch <b>Zohaib Ashrafi</b> at our Mehfil-e-Milad</span><span class="nt-u" lang="ur" dir="rtl">زوہیب اشرفی کی محفلِ میلاد دیکھیں</span><i class="nt-arrow" aria-hidden="true"></i></a>
+  <a href="#naat" class="naat-teaser" data-go><span class="nt-star">&#9733; New</span><span class="nt-t">Watch <b>Mufti Muneeb, Hafiz Tahir Qadri &amp; Zohaib Ashrafi</b> at our Mehfil-e-Milad</span><span class="nt-u" lang="ur" dir="rtl">مفتی منیب، حافظ طاہر قادری اور زوہیب اشرفی کی محفلِ میلاد دیکھیں</span><i class="nt-arrow" aria-hidden="true"></i></a>
   <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
 </section>
 <section class="drone" id="film">
@@ -1053,6 +1096,10 @@ html:not([data-ev]) #tintLens{opacity:.5}
       <button type="button" class="beat-btn" id="beatBtn" aria-pressed="false"><span class="bb-ic">&#9654;</span><span class="bb-t">Play the beat</span></button><button type="button" class="beat-btn naat-btn" id="naatBtn" aria-pressed="false" hidden><span class="bb-ic">&#9654;</span><span class="bb-t">Play Naat</span> <span lang="ur" dir="rtl">نعت سنیں</span></button><button type="button" class="real-btn" data-film="fairy">&#9654; Real event</button>
     </div>
     <p class="beat-note">A 3D model of our truss, moving-head lights and DJ booth. Drag to look around. The beat is a sample made in your browser; your real playlist is chosen with our DJ.</p>
+    <div class="dj-live" id="djLive">
+      <div class="djl-head"><p class="eyebrow">Live &nbsp;·&nbsp; Sajawat by Hashir DJ</p><h3 class="djl-t">Our DJ Nights, <em class="g">Real &amp; Loud.</em></h3><p class="djl-ur" lang="ur" dir="rtl">ہمارے اصل ڈی جے شو — آواز کے ساتھ دیکھیں</p></div>
+      <div class="djl-grid" id="djGrid"></div>
+    </div>
     <div class="ls-reel" id="lsReel"></div>
     <div class="ls-grid" id="lsGrid"></div>
     <div class="center ls-cta"><a href="#book" class="btn btn-gold mag" data-book-svc>Book DJ, Lights &amp; Sound</a></div>
@@ -1126,15 +1173,15 @@ html:not([data-ev]) #tintLens{opacity:.5}
       <p class="lead naat-lead" data-reveal>Calligraphy backdrops, white and green florals, soft lighting and clear sound, arranged with care and respect for every mehfil.</p>
     </header>
     <div class="naat-grid">
-      <button type="button" class="naat-main" data-vk2="naat" aria-label="Play: Mehfil-e-Milad with Zohaib Ashrafi">
+      <button type="button" class="naat-main" data-vk2="naat" aria-label="Play: Mehfil-e-Milad with Mufti Muneeb, Hafiz Tahir Qadri &amp; Zohaib Ashrafi">
         <img class="naat-bg" src="videos/08-naat-mehfil-e-milad-bg.jpg" alt="">
         <div class="fl tl" data-corner="91" data-pal="rw,rw,rr"></div><div class="fl br" data-corner="92" data-pal="rw,rr,rw"></div>
-        <div class="naat-frame"><video class="vid" muted loop playsinline preload="none" poster="videos/08-naat-mehfil-e-milad.jpg" data-src="videos/08-naat-mehfil-e-milad.mp4" aria-label="Mehfil-e-Milad with Zohaib Ashrafi"></video></div>
+        <div class="naat-frame"><video class="vid" muted loop playsinline preload="none" poster="videos/08-naat-mehfil-e-milad.jpg" data-src="videos/08-naat-mehfil-e-milad.mp4" aria-label="Mehfil-e-Milad with Mufti Muneeb, Hafiz Tahir Qadri &amp; Zohaib Ashrafi"></video></div>
         <span class="naat-badge">&#9733; Highlight</span>
-        <span class="naat-cap"><span class="sc-cat">Mehfil-e-Milad</span><span class="naat-title">Zohaib Ashrafi</span><span class="ur-small" lang="ur" dir="rtl">محفلِ میلاد · زوہیب اشرفی</span><span class="naat-play">&#9654; Play with sound</span></span>
+        <span class="naat-cap"><span class="sc-cat">Mehfil-e-Milad</span><span class="naat-title">Mufti Muneeb · Hafiz Tahir Qadri · Zohaib Ashrafi</span><span class="ur-small" lang="ur" dir="rtl">محفلِ میلاد · مفتی منیب، حافظ طاہر قادری اور زوہیب اشرفی</span><span class="naat-play">&#9654; Play with sound</span></span>
       </button>
       <div class="naat-side">
-        <div class="naat-pointer" aria-hidden="true"><i class="np-arrow"></i><span>Tap the big video to watch <b>Zohaib Ashrafi</b> with sound</span><span class="u" lang="ur" dir="rtl">آواز کے ساتھ دیکھنے کے لیے بڑی ویڈیو پر ٹیپ کریں</span></div>
+        <div class="naat-pointer" aria-hidden="true"><i class="np-arrow"></i><span>Tap the big video to watch <b>Mufti Muneeb, Hafiz Tahir Qadri &amp; Zohaib Ashrafi</b> with sound</span><span class="u" lang="ur" dir="rtl">آواز کے ساتھ دیکھنے کے لیے بڑی ویڈیو پر ٹیپ کریں</span></div>
         <button type="button" class="naat-card" data-vk2="qawwali"><video class="vid" muted loop playsinline preload="none" poster="videos/08-qawwali-night.jpg" data-src="videos/08-qawwali-night.mp4" aria-label="Qawwali night"></video><span class="vid-tag">&#9654; With sound</span><span class="naat-ccap">Qawwali Night<b lang="ur" dir="rtl">قوالی</b></span></button>
         <button type="button" class="naat-card" data-vk2="ecosound"><video class="vid" muted loop playsinline preload="none" poster="videos/08-naat-eco-sound.jpg" data-src="videos/08-naat-eco-sound.mp4" aria-label="Eco Sound naat sound desk"></video><span class="vid-tag">&#9654; With sound</span><span class="naat-ccap">Eco Sound · Naat Khwani<b lang="ur" dir="rtl">نعت خوانی کا ساؤنڈ</b></span></button>
         <button type="button" class="naat-card" data-vk2="rabi"><video class="vid" muted loop playsinline preload="none" poster="videos/08-naat-12-rabi-stage.jpg" data-src="videos/08-naat-12-rabi-stage.mp4" aria-label="12 Rabi-ul-Awal stage"></video><span class="vid-tag">&#9654; Real event</span><span class="naat-ccap">12 Rabi-ul-Awal Stage<b lang="ur" dir="rtl">بارہ ربیع الاول</b></span></button>
@@ -1284,6 +1331,14 @@ const PHOTOS = {
    video loads.                                                              */
 const WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.6c.2-.5.6-.6.9-.6h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .5-.1.6l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3-.1.7-.6.9-1 .5-2.8.2-4.6-1.6S8.5 9.6 9 8.6z"/></svg>';
 
+/* DJ videos from YouTube — paste any YouTube link. start/end in seconds (optional).
+   sound: "own" = the video's own audio · "mix" = video muted + our DJ mix (audio/dj-sajawat-mix.mp3) */
+const DJ_YT = [
+  { url: "https://www.youtube.com/watch?v=lia7l3CWvLw", title: "Sajawat DJ Night · Highlight", tag: "Live DJ", sound: "own", feature: true },
+  { url: "https://youtu.be/3vs8XKSNIJE", title: "The DJ Show · Full Energy", tag: "DJ Show", start: 214, end: 454, sound: "own" },
+  { url: "https://www.youtube.com/watch?v=gSHvcs-DbTU", title: "Truss Rig, Grand Décor & DJ Setup", tag: "Truss · Décor", sound: "mix" }
+];
+const DJ_MIX = "audio/dj-sajawat-mix.mp3";
 const VIDEOS = {
   drone:    { src: "videos/02-drone-floral-tunnel.mp4", poster: "videos/02-drone-floral-tunnel.jpg", title: "Floral tunnel — drone view" },
   drone2:   { src: "videos/02-drone-aerial-marquee.mp4", poster: "videos/02-drone-aerial-marquee.jpg", title: "Arch walkway & lit marquee — drone view" },
@@ -1296,7 +1351,7 @@ const VIDEOS = {
   rabilit:  { src: "videos/08-naat-12-rabi-illumination.mp4", poster: "videos/08-naat-12-rabi-illumination.jpg", title: "12 Rabi-ul-Awal building illumination" },
   ecosound: { src: "videos/08-naat-eco-sound.mp4", poster: "videos/08-naat-eco-sound.jpg", title: "Eco Sound · naat khwani sound desk" },
   milad:    { src: "videos/03-stage-7-milad.mp4", poster: "videos/03-stage-7-milad.jpg", bg: "videos/03-stage-7-milad-bg.jpg", title: "Mehfil-e-Milad stage with Kalima calligraphy" },
-  naat:     { src: "videos/08-naat-mehfil-e-milad.mp4", poster: "videos/08-naat-mehfil-e-milad.jpg", bg: "videos/08-naat-mehfil-e-milad-bg.jpg", title: "Mehfil-e-Milad · Zohaib Ashrafi" },
+  naat:     { src: "videos/08-naat-mehfil-e-milad.mp4", poster: "videos/08-naat-mehfil-e-milad.jpg", bg: "videos/08-naat-mehfil-e-milad-bg.jpg", title: "Mehfil-e-Milad · Mufti Muneeb, Hafiz Tahir Qadri & Zohaib Ashrafi" },
   qawwali:  { src: "videos/08-qawwali-night.mp4", poster: "videos/08-qawwali-night.jpg", title: "Qawwali night" },
   nikah:    { src: "videos/03-stage-1-nikah.mp4", poster: "videos/03-stage-1-nikah.jpg", bg: "videos/03-stage-1-nikah-bg.jpg", title: "Nikah Mubarak stage" },
   baat:     { src: "videos/03-stage-2-baat-pakki.mp4", poster: "videos/03-stage-2-baat-pakki.jpg", bg: "videos/03-stage-2-baat-pakki-bg.jpg", title: "Baat Pakki rose ring" },
@@ -2086,7 +2141,7 @@ const Beat = (() => {
   function start(){ if (!ctx) init(); if (ctx.state === "suspended") ctx.resume(); on = true; step = 0; next = ctx.currentTime + .06; timer = setInterval(sched, 25); sched(); ui(); }
   function stop(){ if (!on) return; on = false; clearInterval(timer); ui(); }
   function ui(){ const b = btn(); if (!b) return; b.setAttribute("aria-pressed", on); $(".bb-ic", b).innerHTML = on ? "&#10074;&#10074;" : "&#9654;"; $(".bb-t", b).textContent = on ? "Stop the beat" : "Play the beat"; }
-  return { toggle(){ try { on ? stop() : start(); } catch (e) {} }, stop, mood(m){ if (PAT[m]){ cur = m; if (on){ step = 0; next = ctx.currentTime + .05; } } } };
+  return { toggle(){ try { on ? stop() : start(); } catch (e) {} }, stop, isOn: () => on, mood(m){ if (PAT[m]){ cur = m; if (on){ step = 0; next = ctx.currentTime + .05; } } } };
 })();
 
 (() => {
@@ -2148,7 +2203,7 @@ const Beat = (() => {
   const sec = $("#lights");
   $$("[data-mood-btn]").forEach(b => b.addEventListener("click", () => { sec.dataset.mood = b.dataset.moodBtn; $$("[data-mood-btn]").forEach(x => x.classList.toggle("on", x === b)); Beat.mood(b.dataset.moodBtn); }));
   new IntersectionObserver(es => es.forEach(e => { sec.classList.toggle("live", e.isIntersecting); if (!e.isIntersecting) Beat.stop(); }), { rootMargin: "100px" }).observe(sec);
-  $("#beatBtn").addEventListener("click", () => Beat.toggle());
+  $("#beatBtn").addEventListener("click", () => { Beat.toggle(); if (Beat.isOn()) DJYT.silence(); });
 })();
 
 (() => {
@@ -2160,6 +2215,78 @@ const Beat = (() => {
     const g = document.createElement("div"); g.id = "grain"; g.setAttribute("aria-hidden", "true"); g.style.backgroundImage = `url(${c.toDataURL()})`;
     document.body.append(g);
   } catch (e) {}
+})();
+
+/* DJ videos (YouTube) — no YouTube preview/branding: cropped, chrome-less, cover until playing */
+const DJYT = (() => {
+  const grid = $("#djGrid"); if (!grid) return { silence(){}, stopAll(){} };
+  const idOf = u => { const m = String(u).match(/(?:youtu\.be\/|[?&]v=|shorts\/|embed\/|live\/)([\w-]{11})/); return m ? m[1] : null; };
+  const list = DJ_YT.map(v => ({ ...v, id: idOf(v.url) })).filter(v => v.id);
+  const mix = new Audio(); mix.loop = true; mix.preload = "none";
+  let api = null, apiP = null, soundOn = -1;
+  grid.innerHTML = list.map((v, i) => `<div class="yt-card${v.feature ? " feat" : ""}" data-yi="${i}">
+    <div class="yt-box"><div id="ytp${i}"></div></div>
+    <button type="button" class="yt-hit" aria-label="Play with sound: ${esc(v.title)}"></button>
+    <div class="yt-cover"><span class="yt-spin"></span><span class="yt-play">&#9654;&nbsp; Tap to play</span></div>
+    <span class="vid-tag">&#9679; ${esc(v.tag || "Live DJ")}</span>
+    <span class="ls-vcap">${esc(v.title)}</span>
+    <span class="yt-snd" aria-hidden="true"><i class="yt-ic">&#128263;</i><b>Tap for sound</b> <span lang="ur" dir="rtl">آواز</span></span>
+  </div>`).join("");
+  const cards = $$(".yt-card", grid);
+  function loadAPI(){
+    if (window.YT && YT.Player) return Promise.resolve(YT);
+    if (apiP) return apiP;
+    apiP = new Promise(res => { const prev = window.onYouTubeIframeAPIReady; window.onYouTubeIframeAPIReady = () => { prev && prev(); res(YT); }; const s = document.createElement("script"); s.src = "https://www.youtube.com/iframe_api"; s.async = true; s.onerror = () => cards.forEach(c => c.classList.add("yt-fail")); document.head.append(s); });
+    return apiP;
+  }
+  function make(i){
+    const v = list[i], c = cards[i]; if (v.p) return;
+    v.p = new YT.Player("ytp" + i, {
+      videoId: v.id, host: "https://www.youtube-nocookie.com",
+      playerVars: { autoplay: 1, mute: 1, controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, iv_load_policy: 3, playsinline: 1, cc_load_policy: 0, start: v.start || 0, end: v.end || undefined, vq: "hd1080", origin: location.origin },
+      events: {
+        onReady: e => { v.ready = true; try { e.target.mute(); e.target.setPlaybackQuality("hd1080"); } catch (x) {} if (c.classList.contains("vis")) e.target.playVideo(); setTimeout(() => { if (!c.classList.contains("playing")) c.classList.add("need-tap"); }, 4000); },
+        onStateChange: e => {
+          const st = e.data; c.classList.toggle("playing", st === 1);
+          if (st === 1){ c.classList.remove("need-tap"); try { e.target.setPlaybackQuality("hd1080"); } catch (x) {} }
+          if (st === 0){ e.target.seekTo(v.start || 0, true); e.target.playVideo(); }
+        }
+      }
+    });
+    const ifr = $("iframe", c); if (ifr) ifr.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
+  }
+  /* loop before YouTube's end screen can appear */
+  setInterval(() => list.forEach((v, i) => {
+    if (!v.ready || !cards[i].classList.contains("playing")) return;
+    try { const t = v.p.getCurrentTime(), end = v.end || (v.p.getDuration() - .8); if (end > 0 && t >= end - .35) v.p.seekTo(v.start || 0, true); } catch (x) {}
+  }), 300);
+  function mute(i){
+    const v = list[i]; cards[i].classList.remove("snd"); $(".yt-snd b", cards[i]).textContent = "Tap for sound"; $(".yt-ic", cards[i]).innerHTML = "&#128263;";
+    if (v.sound === "mix") mix.pause(); else try { v.p.mute(); } catch (x) {}
+    if (soundOn === i) soundOn = -1;
+  }
+  function silence(){ list.forEach((v, i) => mute(i)); }
+  function unmute(i){
+    silence(); try { Beat.stop(); } catch (x) {} try { stopNaat(); } catch (x) {}
+    const v = list[i], c = cards[i];
+    try { v.p.playVideo(); } catch (x) {}
+    if (v.sound === "mix"){ if (!mix.src) mix.src = DJ_MIX; const p = mix.play(); p && p.catch(() => {}); }
+    else { try { v.p.unMute(); v.p.setVolume(100); } catch (x) {} }
+    c.classList.add("snd"); $(".yt-snd b", c).textContent = "Sound on"; $(".yt-ic", c).innerHTML = "&#128266;"; soundOn = i;
+  }
+  cards.forEach((c, i) => $(".yt-hit", c).addEventListener("click", () => {
+    const v = list[i];
+    if (!v.p){ loadAPI().then(() => { make(i); }); return; }
+    soundOn === i ? mute(i) : unmute(i);
+  }));
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    const i = +e.target.dataset.yi, v = list[i]; e.target.classList.toggle("vis", e.isIntersecting);
+    if (e.isIntersecting){ loadAPI().then(() => { if (!v.p) make(i); else if (v.ready) v.p.playVideo(); }); }
+    else if (v.ready){ mute(i); try { v.p.pauseVideo(); } catch (x) {} }
+  }), { rootMargin: "200px 0px" });
+  cards.forEach(c => io.observe(c));
+  function stopAll(){ silence(); list.forEach(v => { try { v.ready && v.p.pauseVideo(); } catch (x) {} }); }
+  return { silence, stopAll };
 })();
 
 /* =====================================================================
@@ -2679,6 +2806,7 @@ function setNaatMode(on){
   $$(".ls-card").forEach(c => { const t = $("h3", c).textContent; if (/DJ/.test(t)) c.hidden = on; });
   const navA = $$('a[href="#lights"]'); navA.forEach(a => { if (a.closest(".links") || a.closest(".menu")) a.textContent = on ? "Naat Sound" : "DJ & Lights"; });
   const cta = $("[data-book-svc]"); if (cta) cta.innerHTML = on ? 'Book Naat Sound &nbsp;·&nbsp; <span lang="ur" dir="rtl" class="ur-in">نعت ساؤنڈ بک کریں</span>' : "Book DJ, Lights &amp; Sound";
+  const dl = $("#djLive"); if (dl) dl.hidden = on; if (on) try { DJYT.stopAll(); } catch (e) {}
   if (on){ try { Beat.stop(); } catch (e) {} } else stopNaat();
 }
 function stopNaat(){ naatAudio.pause(); const b = $("#naatBtn"); b.setAttribute("aria-pressed", "false"); $(".bb-ic", b).innerHTML = "&#9654;"; $(".bb-t", b).textContent = "Play Naat"; }
@@ -2686,6 +2814,7 @@ $("#naatBtn").addEventListener("click", () => {
   const b = $("#naatBtn");
   if (!naatAudio.paused){ stopNaat(); return; }
   if (!naatAudio.src) naatAudio.src = VIDEOS.naat.src;
+  try { DJYT.silence(); } catch (e) {}
   const p = naatAudio.play(); p && p.catch(() => {});
   b.setAttribute("aria-pressed", "true"); $(".bb-ic", b).innerHTML = "&#10074;&#10074;"; $(".bb-t", b).textContent = "Pause Naat";
 });
